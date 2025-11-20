@@ -2,6 +2,7 @@ package cloud.matheus.curtin.service;
 
 import cloud.matheus.curtin.dto.UrlRequest;
 import cloud.matheus.curtin.dto.UrlResponse;
+import cloud.matheus.curtin.dto.UrlStatsResponse;
 import cloud.matheus.curtin.entity.UrlEntity;
 import cloud.matheus.curtin.exception.UrlNotFoundException;
 import cloud.matheus.curtin.mapper.UrlMapper;
@@ -44,9 +45,10 @@ public class UrlService {
         return urlMapper.toDto(url);
     }
 
+    public UrlStatsResponse getUrlStatsByCode(String code){
+        UrlEntity url = urlRepository.findByUrlCode(code).orElseThrow(()-> new UrlNotFoundException("No url found with code " + code));
 
-
-
-
+        return urlMapper.toStatsDto(url);
+    }
 
 }

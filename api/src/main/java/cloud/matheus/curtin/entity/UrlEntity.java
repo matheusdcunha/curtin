@@ -31,7 +31,7 @@ public class UrlEntity {
     private String urlCode;
 
     @Column(name = "access_count")
-    private Long acessCount = 0L;
+    private Long accessCount = 0L;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -16,7 +16,7 @@ public interface UrlRepository extends JpaRepository<UrlEntity, Long>{
 
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query("UPDATE UrlEntity u SET  u.updatedAt = :data, u.acessCount = u.acessCount + 1 WHERE u.id = :id")
+    @Query("UPDATE UrlEntity u SET  u.updatedAt = :data, u.accessCount = u.accessCount + 1 WHERE u.id = :id")
     void incrementarAcesso(@Param("id") Long id,  @Param("data") LocalDateTime data);
 
 }
