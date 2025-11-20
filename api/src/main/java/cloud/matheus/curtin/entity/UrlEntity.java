@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name="tb_url")
 @EntityListeners(AuditingEntityListener.class)
-public class URLEntity {
+public class UrlEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
