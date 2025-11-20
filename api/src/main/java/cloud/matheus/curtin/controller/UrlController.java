@@ -31,6 +31,8 @@ public class UrlController {
 
     @PostMapping
     public ResponseEntity<UrlResponse> createUrl(@RequestBody UrlRequest urlRequest){
+        LOGGER.info("UrlController - POST / request received with body: {} at {}", urlRequest, LocalDateTime.now());
+
 
         UrlResponse urlResponse = this.urlService.createUrl(urlRequest);
 
@@ -39,7 +41,7 @@ public class UrlController {
 
     @GetMapping("/{urlCode}")
     public ResponseEntity<Void> getUrl(@PathVariable String urlCode){
-        LOGGER.info("UrlController - /{urlCode} request received for urlCode: {} at {}", urlCode, LocalDateTime.now());
+        LOGGER.info("UrlController - GET /{urlCode} request received for urlCode: {} at {}", urlCode, LocalDateTime.now());
 
         if ("favicon.ico".equals(urlCode)) {
             return ResponseEntity.notFound().build();
@@ -55,7 +57,7 @@ public class UrlController {
 
     @GetMapping("/{urlCode}/stats")
     public ResponseEntity<UrlStatsResponse> getUrlStats(@PathVariable String urlCode){
-        LOGGER.info("UrlController - /{urlCode}/stats request received for urlCode: {} at {}", urlCode, LocalDateTime.now());
+        LOGGER.info("UrlController - GET /{urlCode}/stats request received for urlCode: {} at {}", urlCode, LocalDateTime.now());
 
         UrlStatsResponse urlResponse = this.urlService.getUrlStatsByCode(urlCode);
 

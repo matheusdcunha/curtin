@@ -1,5 +1,7 @@
 package cloud.matheus.curtin;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -8,8 +10,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class CurtinApplication {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CurtinApplication.class);
+
+
 	public static void main(String[] args) {
-		SpringApplication.run(CurtinApplication.class, args);
+
+        LOGGER.info("Curtin - Application Starting");
+
+        SpringApplication.run(CurtinApplication.class, args);
+
+        LOGGER.info("Curtin - Application Ready");
+
 	}
 
 }
