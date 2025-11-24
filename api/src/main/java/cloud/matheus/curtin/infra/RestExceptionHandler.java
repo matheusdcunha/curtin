@@ -34,11 +34,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException exception, HttpHeaders headers, HttpStatusCode status, WebRequest request){
 
-        status = HttpStatus.NOT_FOUND;
+        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
 
-        HttpStatus httpStatus = HttpStatus.valueOf(status.value());
-
-        Integer statusCode = HttpStatus.NOT_FOUND.value();
+        Integer statusCode = httpStatus.value();
         String path = request.getDescription(false).replace("uri=", "");
         String error = httpStatus.getReasonPhrase();
         String message = "Route not exists";

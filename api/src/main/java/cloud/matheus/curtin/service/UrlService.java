@@ -1,6 +1,5 @@
 package cloud.matheus.curtin.service;
 
-import cloud.matheus.curtin.controller.UrlController;
 import cloud.matheus.curtin.dto.UrlRequest;
 import cloud.matheus.curtin.dto.UrlResponse;
 import cloud.matheus.curtin.dto.UrlStatsResponse;
@@ -8,26 +7,22 @@ import cloud.matheus.curtin.entity.UrlEntity;
 import cloud.matheus.curtin.exception.UrlNotFoundException;
 import cloud.matheus.curtin.mapper.UrlMapper;
 import cloud.matheus.curtin.repository.UrlRepository;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UrlService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UrlService.class);
 
     private final UrlRepository urlRepository;
     private final UrlMapper urlMapper;
-
-    public UrlService(UrlRepository urlRepository, UrlMapper urlMapper) {
-        this.urlRepository = urlRepository;
-        this.urlMapper = urlMapper;
-    }
 
     private String generateRandomUrl(){
         return RandomStringUtils.secure().nextAlphanumeric(7);
